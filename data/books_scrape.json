@@ -1,0 +1,252 @@
+[
+    {
+        "catégorie": "Travel",
+        "nombre_de_livres": 11,
+        "prix_moyen": 39.79
+    },
+    {
+        "catégorie": "Mystery",
+        "nombre_de_livres": 32,
+        "prix_moyen": 31.72
+    },
+    {
+        "catégorie": "Historical Fiction",
+        "nombre_de_livres": 26,
+        "prix_moyen": 33.64
+    },
+    {
+        "catégorie": "Sequential Art",
+        "nombre_de_livres": 75,
+        "prix_moyen": 34.57
+    },
+    {
+        "catégorie": "Classics",
+        "nombre_de_livres": 19,
+        "prix_moyen": 36.55
+    },
+    {
+        "catégorie": "Philosophy",
+        "nombre_de_livres": 11,
+        "prix_moyen": 33.56
+    },
+    {
+        "catégorie": "Romance",
+        "nombre_de_livres": 35,
+        "prix_moyen": 33.93
+    },
+    {
+        "catégorie": "Womens Fiction",
+        "nombre_de_livres": 17,
+        "prix_moyen": 36.79
+    },
+    {
+        "catégorie": "Fiction",
+        "nombre_de_livres": 65,
+        "prix_moyen": 36.07
+    },
+    {
+        "catégorie": "Childrens",
+        "nombre_de_livres": 29,
+        "prix_moyen": 32.64
+    },
+    {
+        "catégorie": "Religion",
+        "nombre_de_livres": 7,
+        "prix_moyen": 32.57
+    },
+    {
+        "catégorie": "Nonfiction",
+        "nombre_de_livres": 110,
+        "prix_moyen": 34.26
+    },
+    {
+        "catégorie": "Music",
+        "nombre_de_livres": 13,
+        "prix_moyen": 35.64
+    },
+    {
+        "catégorie": "Default",
+        "nombre_de_livres": 152,
+        "prix_moyen": 34.39
+    },
+    {
+        "catégorie": "Science Fiction",
+        "nombre_de_livres": 16,
+        "prix_moyen": 33.8
+    },
+    {
+        "catégorie": "Sports and Games",
+        "nombre_de_livres": 5,
+        "prix_moyen": 41.17
+    },
+    {
+        "catégorie": "Add a comment",
+        "nombre_de_livres": 67,
+        "prix_moyen": 35.8
+    },
+    {
+        "catégorie": "Fantasy",
+        "nombre_de_livres": 48,
+        "prix_moyen": 39.59
+    },
+    {
+        "catégorie": "New Adult",
+        "nombre_de_livres": 6,
+        "prix_moyen": 46.38
+    },
+    {
+        "catégorie": "Young Adult",
+        "nombre_de_livres": 54,
+        "prix_moyen": 35.45
+    },
+    {
+        "catégorie": "Science",
+        "nombre_de_livres": 14,
+        "prix_moyen": 33.09
+    },
+    {
+        "catégorie": "Poetry",
+        "nombre_de_livres": 19,
+        "prix_moyen": 35.97
+    },
+    {
+        "catégorie": "Paranormal",
+        "nombre_de_livres": 1,
+        "prix_moyen": 15.4
+    },
+    {
+        "catégorie": "Art",
+        "nombre_de_livres": 8,
+        "prix_moyen": 38.52
+    },
+    {
+        "catégorie": "Psychology",
+        "nombre_de_livres": 7,
+        "prix_moyen": 34.22
+    },
+    {
+        "catégorie": "Autobiography",
+        "nombre_de_livres": 9,
+        "prix_moyen": 37.05
+    },
+    {
+        "catégorie": "Parenting",
+        "nombre_de_livres": 1,
+        "prix_moyen": 37.35
+    },
+    {
+        "catégorie": "Adult Fiction",
+        "nombre_de_livres": 1,
+        "prix_moyen": 15.36
+    },
+    {
+        "catégorie": "Humor",
+        "nombre_de_livres": 10,
+        "prix_moyen": 33.5
+    },
+    {
+        "catégorie": "Horror",
+        "nombre_de_livres": 17,
+        "prix_moyen": 35.95
+    },
+    {
+        "catégorie": "History",
+        "nombre_de_livres": 18,
+        "prix_moyen": 37.29
+    },
+    {
+        "catégorie": "Food and Drink",
+        "nombre_de_livres": 30,
+        "prix_moyen": 31.41
+    },
+    {
+        "catégorie": "Christian Fiction",
+        "nombre_de_livres": 6,
+        "prix_moyen": 34.38
+    },
+    {
+        "catégorie": "Business",
+        "nombre_de_livres": 12,
+        "prix_moyen": 32.46
+    },
+    {
+        "catégorie": "Biography",
+        "nombre_de_livres": 5,
+        "prix_moyen": 33.66
+    },
+    {
+        "catégorie": "Thriller",
+        "nombre_de_livres": 11,
+        "prix_moyen": 31.43
+    },
+    {
+        "catégorie": "Contemporary",
+        "nombre_de_livres": 3,
+        "prix_moyen": 36.2
+    },
+    {
+        "catégorie": "Spirituality",
+        "nombre_de_livres": 6,
+        "prix_moyen": 35.1
+    },
+    {
+        "catégorie": "Academic",
+        "nombre_de_livres": 1,
+        "prix_moyen": 13.12
+    },
+    {
+        "catégorie": "Self Help",
+        "nombre_de_livres": 5,
+        "prix_moyen": 40.62
+    },
+    {
+        "catégorie": "Historical",
+        "nombre_de_livres": 2,
+        "prix_moyen": 22.83
+    },
+    {
+        "catégorie": "Christian",
+        "nombre_de_livres": 3,
+        "prix_moyen": 42.5
+    },
+    {
+        "catégorie": "Suspense",
+        "nombre_de_livres": 1,
+        "prix_moyen": 58.33
+    },
+    {
+        "catégorie": "Short Stories",
+        "nombre_de_livres": 1,
+        "prix_moyen": 35.88
+    },
+    {
+        "catégorie": "Novels",
+        "nombre_de_livres": 1,
+        "prix_moyen": 54.81
+    },
+    {
+        "catégorie": "Health",
+        "nombre_de_livres": 4,
+        "prix_moyen": 51.45
+    },
+    {
+        "catégorie": "Politics",
+        "nombre_de_livres": 3,
+        "prix_moyen": 53.61
+    },
+    {
+        "catégorie": "Cultural",
+        "nombre_de_livres": 1,
+        "prix_moyen": 36.58
+    },
+    {
+        "catégorie": "Erotica",
+        "nombre_de_livres": 1,
+        "prix_moyen": 19.19
+    },
+    {
+        "catégorie": "Crime",
+        "nombre_de_livres": 1,
+        "prix_moyen": 10.97
+    }
+]
