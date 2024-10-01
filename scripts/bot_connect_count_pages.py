@@ -1,6 +1,8 @@
 import random
 import time
 import requests
+import json
+import os
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
@@ -25,7 +27,7 @@ def type_like_human(element, text):
 
 
 # Fonction pour cliquer sur le bouton "Next" tant qu'il est présent
-def navigate_pagination(driver):
+def navigate_pagination(driver, page_count):
     action = ActionChains(driver)
     
     while True:
@@ -48,7 +50,8 @@ def navigate_pagination(driver):
                 time.sleep(random.uniform(2, 4))
                 
                 # Affiche l'URL de la page courante après avoir changé de page
-                print(f"Navigué vers : {driver.current_url}")
+                page_count += 1
+                print(f"Navigué vers : {driver.current_url} (Page {page_count})")
                 
             else:
                 # Si le bouton "Next" n'est pas trouvé, on arrête la boucle
@@ -59,6 +62,24 @@ def navigate_pagination(driver):
             # Si une autre erreur survient, on sort de la boucle
             print("Erreur inattendue : ", str(e))
             break
+    
+    return page_count
+
+# Fonction pour sauvegarder les données dans un fichier JSON
+def save_page_count_to_json(page_count):
+    data = {"total_pages": page_count}
+    
+    # Définir le chemin du fichier dans ../data/
+    file_path = os.path.join('..', 'data', 'bot_connect_count_pages.json')
+    
+    # S'assurer que le répertoire existe
+    os.makedirs(os.path.dirname(file_path), exist_ok=True)
+    
+    # Écrire les données dans le fichier JSON
+    with open(file_path, 'w') as f:
+        json.dump(data, f, indent=4)
+    
+    print(f"Données sauvegardées dans {file_path}")
 
 # Configuration du navigateur avec profil utilisateur
 chrome_options = Options()
@@ -75,10 +96,10 @@ password = driver.find_element(By.ID, "password")
 # Simuler les mouvements de souris vers les champs avant la saisie
 action = ActionChains(driver)
 action.move_to_element(username).perform()
-type_like_human(username, "your_username")
+type_like_human(username, "Homer Simpson")
 
 action.move_to_element(password).perform()
-type_like_human(password, "your_password")
+type_like_human(password, "Dooh!")
 
 # Cliquer sur le bouton de connexion
 login_button = driver.find_element(By.CSS_SELECTOR, "input[type='submit']")
@@ -87,17 +108,14 @@ action.move_to_element(login_button).click().perform()
 # Attendre quelques secondes que la page se charge
 time.sleep(random.uniform(2, 4))
 
+# Initialisation du compteur de pages
+page_count = 1  # La première page est déjà ouverte
 
 # Boucle de scraping avec gestion de la pagination
-while True:
-    # Traiter le contenu de la page ici
-    print(f"Scraping la page: {driver.current_url}")
-    navigate_pagination(driver)
-    
-    # Condition d'arrêt : vérifie s'il n'y a plus de bouton "Next"
-    if not driver.find_elements(By.LINK_TEXT, "Next"):
-        print("Pagination terminée.")
-        break
+page_count = navigate_pagination(driver, page_count)
+
+# Sauvegarder le nombre total de pages dans un fichier JSON
+save_page_count_to_json(page_count)
 
 # Fermer le navigateur une fois terminé
 driver.quit()
