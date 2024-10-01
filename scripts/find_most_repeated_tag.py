@@ -9,7 +9,6 @@ from selenium.webdriver.support import expected_conditions as EC
 
 # Configurer l'option pour que le navigateur n'affiche pas de fenêtre (headless)
 chrome_options = Options()
-chrome_options.add_argument("--headless")
 
 # Chemin vers ton WebDriver
 service = Service(executable_path="..\\drivers\\chromedriver.exe")
