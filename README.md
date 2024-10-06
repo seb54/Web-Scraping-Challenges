@@ -1,4 +1,4 @@
-# Web Scraping Scripts
+# Web Scraping Challenges
 
 Ce repository contient une série de scripts Python utilisant Selenium pour effectuer diverses tâches de web scraping. Chaque script est conçu pour automatiser la collecte d'informations spécifiques sur des pages web, principalement des citations du site [Quotes to Scrape](https://quotes.toscrape.com/).
 
