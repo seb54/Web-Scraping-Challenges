@@ -62,7 +62,7 @@ Ce script scrute une page de tableau de citations et compte les occurrences des 
 python find_most_repeated_tag.py
 ```
 
-### 5. books_scraper.py
+### 5. `books_scraper.py`
 
 Ce script scrape les catégories de livres sur le site "Books to Scrape" et calcule le nombre de livres et le prix moyen par catégorie.
 
@@ -71,7 +71,7 @@ Ce script scrape les catégories de livres sur le site "Books to Scrape" et calc
 ```sh
 python books_scrapper.py
 ```
-### 6. bot_connect_count_pages.py
+### 6. `bot_connect_count_pages.py`
 
 Ce script permet de se connecter à un site en simulant une saisie humaine, puis de naviguer à travers la pagination pour collecter des informations.
 
@@ -81,7 +81,7 @@ Ce script permet de se connecter à un site en simulant une saisie humaine, puis
 python bot_connect_count_pages.py
 ```
 
-### 7. count_quotes.py
+### 7. `count_quotes.py`
 
 Ce script fait défiler une page avec des citations jusqu'à ce qu'il n'y ait plus de nouvelles citations à charger, puis extrait toutes les citations valides.
 
