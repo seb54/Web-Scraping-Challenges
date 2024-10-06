@@ -102,22 +102,3 @@ driver = configure_driver("..\\drivers\\chromedriver.exe")
 
 Assurez-vous de remplacer le chemin par celui où est situé votre ChromeDriver.
 
-## Notes
-
-- Ces scripts utilisent des options Chrome en mode headless pour que les navigations se fassent sans ouvrir de fenêtre.
-- Il est recommandé de vérifier les conditions d'utilisation des sites avant de faire du web scraping.
-
-## Contributions
-
-Les contributions sont les bienvenues ! N'hésitez pas à ouvrir des issues ou à proposer des pull requests pour améliorer les fonctionnalités.
-
-## Avertissement
-
-Ces scripts sont à des fins d'apprentissage. Veuillez respecter l'éthique du web scraping et ne pas surcharger les serveurs des sites cibles.
-
----
-
-**Auteur** : Sébastien
-
-**Licence** : MIT
-
