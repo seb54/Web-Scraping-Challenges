@@ -4,33 +4,38 @@ from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+import time
 
-# Configurer l'option pour que le navigateur n'affiche pas de fenêtre (headless)
-chrome_options = Options()
-chrome_options.add_argument("--headless")
+def configure_driver(executable_path: str) -> webdriver.Chrome:
+    """Configure le navigateur Chrome en mode headless et retourne le driver configuré."""
+    chrome_options = Options()
+    service = Service(executable_path=executable_path)
+    driver = webdriver.Chrome(service=service, options=chrome_options)
+    return driver
 
-# Chemin vers ton WebDriver
-service = Service(executable_path="..\\drivers\\chromedriver.exe")
-
-# Initialiser le driver avec les options
-driver = webdriver.Chrome(service=service, options=chrome_options)
-
-# Ouvrir la page avec Selenium
-driver.get("https://quotes.toscrape.com/js-delayed/page/5/")
-
-# Attendre que les citations apparaissent avec un délai maximum de 10 secondes
-try:
-    # Attente explicite pour que les éléments soient présents
-    quotes = WebDriverWait(driver, 10).until(
+def wait_for_quotes(driver, timeout: int = 20):
+    """Attend que toutes les citations soient présentes sur la page avec un délai plus long."""
+    return WebDriverWait(driver, timeout).until(
         EC.presence_of_all_elements_located((By.CLASS_NAME, "quote"))
     )
-    
-    # Vérifier s'il y a au moins 5 citations
+
+def get_fifth_quote(quotes: list) -> str:
+    """Récupère la cinquième citation si elle est présente."""
     if len(quotes) >= 5:
-        fifth_quote = quotes[4].find_element(By.CLASS_NAME, "text").text
-        print("Cinquième citation:", fifth_quote)
+        return quotes[4].find_element(By.CLASS_NAME, "text").text
     else:
-        print("Il n'y a pas assez de citations sur la page.")
-finally:
-    # Fermer le driver
-    driver.quit()
+        return "Il n'y a pas assez de citations sur la page."
+
+def main():
+    driver = configure_driver("..\\drivers\\chromedriver.exe")
+    try:
+        driver.get("https://quotes.toscrape.com/js-delayed/page/5/")
+        time.sleep(5)  # Pause pour s'assurer que la page est entièrement chargée
+        quotes = wait_for_quotes(driver)
+        fifth_quote = get_fifth_quote(quotes)
+        print("Cinquième citation:", fifth_quote)
+    finally:
+        driver.quit()
+
+if __name__ == "__main__":
+    main()

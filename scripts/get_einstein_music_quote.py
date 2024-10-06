@@ -6,44 +6,46 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.support.ui import Select, WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
-# Configurer Chrome pour afficher la fenêtre (sans headless) et options supplémentaires
-chrome_options = Options()
+def configure_driver(executable_path: str) -> webdriver.Chrome:
+    """Configure le navigateur Chrome et retourne le driver configuré."""
+    chrome_options = Options()
+    service = Service(executable_path=executable_path)
+    driver = webdriver.Chrome(service=service, options=chrome_options)
+    return driver
 
-# Chemin vers ton WebDriver
-service = Service(executable_path="..\\drivers\\chromedriver.exe")
+def wait_for_element(driver, by: By, value: str, timeout: int = 30):
+    """Attend qu'un élément soit visible sur la page."""
+    WebDriverWait(driver, timeout).until(EC.presence_of_element_located((by, value)))
 
-# Initialiser le driver avec les options
-driver = webdriver.Chrome(service=service, options=chrome_options)
+def select_author_and_tag(driver, author: str, tag: str):
+    """Sélectionne l'auteur et le tag dans les menus déroulants."""
+    author_select = Select(driver.find_element(By.ID, "author"))
+    author_select.select_by_visible_text(author)
+    tag_select = Select(driver.find_element(By.ID, "tag"))
+    tag_select.select_by_visible_text(tag)
 
-# Ouvrir la page avec Selenium
-driver.get("https://quotes.toscrape.com/search.aspx")
+def submit_form_with_javascript(driver):
+    """Soumet le formulaire via l'appel JavaScript __doPostBack."""
+    driver.execute_script("__doPostBack();")
 
-# Pause supplémentaire pour donner le temps au site de charger
-time.sleep(5)  # Pause de 5 secondes, ajuste selon la vitesse du chargement
+def get_quote(driver) -> str:
+    """Récupère la citation présente dans la div "results"."""
+    wait_for_element(driver, By.CLASS_NAME, "results", timeout=10)
+    quote = driver.find_element(By.CLASS_NAME, "content").text
+    return quote
 
-# Attendre que l'élément avec l'ID "author" soit visible
-WebDriverWait(driver, 30).until(EC.presence_of_element_located((By.ID, "author")))
+def main():
+    driver = configure_driver("..\\drivers\\chromedriver.exe")
+    try:
+        driver.get("https://quotes.toscrape.com/search.aspx")
+        time.sleep(5)  # Pause pour donner le temps au site de charger
+        wait_for_element(driver, By.ID, "author")
+        select_author_and_tag(driver, "Albert Einstein", "music")
+        submit_form_with_javascript(driver)
+        quote = get_quote(driver)
+        print("Citation d'Albert Einstein sur la musique:", quote)
+    finally:
+        driver.quit()
 
-# Sélectionner Albert Einstein comme auteur
-author_select = Select(driver.find_element(By.ID, "author"))
-author_select.select_by_visible_text("Albert Einstein")
-
-# Sélectionner 'music' comme tag
-tag_select = Select(driver.find_element(By.ID, "tag"))
-tag_select.select_by_visible_text("music")
-
-# Exécuter le JavaScript pour soumettre le formulaire via __doPostBack
-driver.execute_script("__doPostBack();")
-
-# Attendre que les résultats apparaissent (maximum 10 secondes)
-WebDriverWait(driver, 10).until(
-    EC.presence_of_element_located((By.CLASS_NAME, "results"))
-)
-
-# Récupérer la citation dans la div "results"
-quote = driver.find_element(By.CLASS_NAME, "content").text
-
-print("Citation d'Albert Einstein sur la musique:", quote)
-
-# Fermer le driver
-driver.quit()
+if __name__ == "__main__":
+    main()
